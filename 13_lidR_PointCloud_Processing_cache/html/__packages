@@ -1,0 +1,11 @@
+sp
+raster
+lidR
+mapview
+rgl
+pandocfilters
+rmarkdown
+formatR
+gitignore
+tinytex
+knitr
