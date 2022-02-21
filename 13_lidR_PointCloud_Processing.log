@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2022.2.14)  21 FEB 2022 04:10
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2022.2.14)  21 FEB 2022 04:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -687,20 +687,52 @@ LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 [1
 
 ]
-Overfull \hbox (29407.99498pt too wide) in paragraph at lines 182--182
-[]\TU/lmtt/m/n/10 ##   |                                                                              |===================================================                   |  72%  |                                                                              |===================================================                   |  73%  |                                                                              |====================================================                  |  74%  |                                                                              |====================================================                  |  75%  |                                                                              |=====================================================                 |  75%  |                                                                              |=====================================================                 |  76%  |                                                                              |======================================================                |  77%  |                                                                              |======================================================                |  78%  |                                                                              |=======================================================               |  78%  |                                                                              |=======================================================               |  79%  |                                                                              |========================================================              |  80%  |                                                                              |=========================================================             |  81%  |                                                                              |=========================================================             |  82%  |                                                                              |==========================================================            |  82%  |                                                                              |==========================================================            |  83%  |                                                                              |===========================================================           |  84%  |                                                                              |===========================================================           |  85%  |                                                                              |============================================================          |  85%  |                                                                              |============================================================          |  86%  |                                                                              |=============================================================         |  87%  |                                                                              |=============================================================         |  88%  |                                                                              |==============================================================        |  88%  |                                                                              |==============================================================        |  89%  |                                                                              |===============================================================       |  90%  |                                                                              |================================================================      |  91%  |                                                                              |================================================================      |  92%  |                                                                              |=================================================================     |  92%  |                                                                              |=================================================================     |  93%  |                                                                              |==================================================================    |  94%  |                                                                              |==================================================================    |  95%  |                                                                              |===================================================================   |  95%  |                                                                              |===================================================================   |  96%  |                                                                              |====================================================================  |  97%  |                                                                              |====================================================================  |  98%  |                                                                              |===================================================================== |  98%  |                                                                              |===================================================================== |  99%[] 
+Overfull \hbox (2863.99498pt too wide) in paragraph at lines 182--182
+[]\TU/lmtt/m/n/10 ##   |                                                                              |====================================================================  |  97%  |                                                                              |====================================================================  |  98%  |                                                                              |===================================================================== |  98%  |                                                                              |===================================================================== |  99%[] 
  []
 
-! Text line contains an invalid character.
-l.193 ...- Checking file version consistency...^^[
-                                                  [0;32m ✓^^[[0m 
-Here is how much of TeX's memory you used:
- 16758 strings out of 478181
- 309843 string characters out of 5853437
- 768753 words of memory out of 5000000
- 37189 multiletter control sequences out of 15000+600000
- 472849 words of font info for 61 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 86i,6n,121p,5727b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
+File: 13_lidR_PointCloud_Processing_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type pdf)
+<use 13_lidR_PointCloud_Processing_files/figure-latex/unnamed-chunk-2-1.pdf>
+File: 13_lidR_PointCloud_Processing_files/markdown_pngs/tas_ctg_check.png Graphic file (type bmp)
+<13_lidR_PointCloud_Processing_files/markdown_pngs/tas_ctg_check.png>
 
-Output written on 13_lidR_PointCloud_Processing.pdf (1 page).
+Overfull \hbox (33.90219pt too wide) in paragraph at lines 198--211
+[][]\TU/lmr/m/n/10 Catalog
+ []
+
+[2]
+File: 13_lidR_PointCloud_Processing_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf)
+<use 13_lidR_PointCloud_Processing_files/figure-latex/unnamed-chunk-4-1.pdf>
+[3]
+File: 13_lidR_PointCloud_Processing_files/markdown_pngs/tas_ctg_check.png Graphic file (type bmp)
+<13_lidR_PointCloud_Processing_files/markdown_pngs/tas_ctg_check.png>
+[4]
+File: 13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau.png Graphic file (type bmp)
+<13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau.png>
+File: 13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_csf.png Graphic file (type bmp)
+<13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_csf.png>
+[5]
+File: 13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_pmf.png Graphic file (type bmp)
+<13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_pmf.png>
+[6] [7] [8]
+File: 13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_norm_histogram.png Graphic file (type bmp)
+<13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_norm_histogram.png>
+
+! LaTeX Error: File `13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_chm' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.442 ...g_files/markdown_pngs/las_tile_ahbau_chm}
+                                                   
+Here is how much of TeX's memory you used:
+ 16889 strings out of 478181
+ 317811 string characters out of 5853437
+ 759753 words of memory out of 5000000
+ 37285 multiletter control sequences out of 15000+600000
+ 472857 words of font info for 62 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 86i,6n,121p,671b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on 13_lidR_PointCloud_Processing.pdf (8 pages).

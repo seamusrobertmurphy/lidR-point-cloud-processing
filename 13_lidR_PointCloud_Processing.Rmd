@@ -3,11 +3,13 @@ title: "Script Review: '14_lidR-Processing_to_Git'"
 author: "SRM-LQ"
 date: "04/02/2022"
 output: 
-  github_document:
+  pdf_document:
     toc: TRUE
     toc_depth: 5
     number_sections: TRUE
+    latex_engine: xelatex
   zotero: TRUE
+  
   bibliography: references.bib   
 ---
 
@@ -69,11 +71,11 @@ LiDAR data for the Ahbau region included 311 tiles. Tiles were assembled, import
 
 ```{r, eval=TRUE}
 las_ctg_ahbau = readALSLAScatalog("./Data/Ahbau/Las_v12_ASPRS/", select = "xyzcr",)
-las_check(las_ctg_ahbau)
 plot(las_ctg_ahbau)
+#las_check(las_ctg_ahbau)
 ```
 
-Catalog indexing and chunk processing was attempted first time around using the *catalog_laxindex* and the *catalog_retile* operations. This was a little more sluggish and buggy, and only relies on the internal lidR tools of *readALSLAScatalog* that was faster. The *readALSLAScatalog* function allows calibrating chunk processing, rebuffering, indexing, and filtering while reading in. According to lidR manual, 'catalogs with files that overlap are not natively supported... the user should filter any overlaps' (cite: pg #no.). To avoid edge artifacts, reccommended buffering was left at 10m and the '-drop_class 19' filter was applied. For LAS point classifications, see ESRI resource [here](https://desktop.arcgis.com/en/arcmap/latest/manage-data/las-dataset/lidar-point-classification.htm#ESRI_SECTION1_FDEB62EB5C2B463F86507C3EE0A7F441).
+![](13_lidR_PointCloud_Processing_files/markdown_pngs/tas_ctg_check.png)Catalog indexing and chunk processing was attempted first time around using the *catalog_laxindex* and the *catalog_retile* operations. This was a little more sluggish and buggy, and only relies on the internal lidR tools of *readALSLAScatalog* that was faster. The *readALSLAScatalog* function allows calibrating chunk processing, rebuffering, indexing, and filtering while reading in. According to lidR manual, 'catalogs with files that overlap are not natively supported... the user should filter any overlaps' (cite: pg #no.). To avoid edge artifacts, reccommended buffering was left at 10m and the '-drop_class 19' filter was applied. For LAS point classifications, see ESRI resource [here](https://desktop.arcgis.com/en/arcmap/latest/manage-data/las-dataset/lidar-point-classification.htm#ESRI_SECTION1_FDEB62EB5C2B463F86507C3EE0A7F441).
 
 ```{r, eval=FALSE}
 las_ctg_ahbau_indexed = readALSLAScatalog("./Data/Ahbau/Las_v12_ASPRS/")
@@ -84,7 +86,7 @@ opt_chunk_size(las_ctg_ahbau_indexed) = 1000
 opt_chunk_buffer(las_ctg_ahbau_indexed) = 10
 filter_duplicates(las_ctg_ahbau_indexed)
 is.indexed(las_ctg_ahbau_indexed)
-las_check(las_ctg_ahbau_indexed)
+#las_check(las_ctg_ahbau_indexed)
 plot(las_ctg_ahbau_indexed, chunk = TRUE)
 ```
 
@@ -96,7 +98,7 @@ opt_filter(las_ctg_ahbau_indexed) = '-drop_class 19'
 opt_chunk_size(las_ctg_ahbau_indexed) = 1000 
 opt_chunk_buffer(las_ctg_ahbau_indexed) = 10
 is.indexed(las_ctg_ahbau_indexed)
-las_check(las_ctg_ahbau_indexed)
+#las_check(las_ctg_ahbau_indexed)
 plot(las_ctg_ahbau_indexed, chunk = TRUE)
 
 # deprecated functions
@@ -116,6 +118,8 @@ plot(las_ctg_ahbau_indexed, chunk = TRUE)
 #crs(las_ctg_ahbau_indexed) = 3005
 #plot(las_ctg_ahbau_retiled, chunk = TRUE)
 ```
+
+![](13_lidR_PointCloud_Processing_files/markdown_pngs/tas_ctg_check.png)
 
 For visualization purposes, a single las tile '093g030122ne" was loaded, processed and plotted. All subsequent illustrations of processing operations were rendered using this tile chunk.
 
@@ -181,9 +185,9 @@ las_tile_ahbau_csf_sor = filter_poi(las_tile_ahbau_csf_so, Classification != LAS
 las_tile_ahbau_pmf_sor = filter_poi(las_tile_ahbau_pmf_so, Classification != LASNOISE)
 ```
 
-<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_csf_so.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_csf_so.png" width="1200"/>
 
-<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_pmf_so.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_pmf_so.png" width="1200"/>
 
 # Digital Terrain Model
 
@@ -196,11 +200,11 @@ las_tile_ahbau_csf_sor_dtm_plot = plot_dtm3d(las_tile_ahbau_csf_sor_dtm, bg = "w
 las_tile_ahbau_pmf_sor_dtm_plot = plot_dtm3d(las_tile_ahbau_pmf_sor_dtm, bg = "white") 
 ```
 
-<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_csf_sor_dtm.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_csf_sor_dtm.png" width="1200"/>
 
-<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_pmf_sor_dtm.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_pmf_sor_dtm.png" width="1200"/>
 
-Visually, the cloth simulation filter produced better DEM result than the pmf that appears grainy. Rousseau (2021: 3.2) mentioned that the progressive morphological filter is an originally raster-based algorithm, while 'csf' may perform better with lidR operations that are point-orientated. The former was chosen to derive below a DEM raster for the Ahbau catalog. TODO: run individual las_check on two chunks showing warnings in processing image report of 'grid_terrain...knnidw()' operation below right:
+Visually, the cloth simulation filter produced better DEM result than the pmf that appears grainy. Rousseau (2021: 3.2) mentioned that the progressive morphological filter is an originally raster-based algorithm, while 'csf' may perform better with lidR operations that are point-orientated. The former was chosen to derive below a DEM raster for the Ahbau catalog. TODO: run individual las_check on two chunks showing warnings in processing image report of 'grid_terrain...knnidw()' operation bottom image:
 
 ```{r, eval=FALSE, rgl.static=TRUE}
 opt_output_files(las_ctg_ahbau_csf_sor) = paste0(tempdir(), "./Data/las_ctg_ahbau_dtm")
@@ -225,9 +229,9 @@ las_ctg_ahbau_csf_sor_dtm_shade = hillShade(
 plot(las_ctg_ahbau_csf_sor_dtm_shade, col=grey(0:100/100), legend=FALSE)
 ```
 
-<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_ctg_ahbau_hillshade.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_ctg_ahbau_hillshade.png" width="1200"/>
 
-<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_ctg_ahbau_dtm_processing.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_ctg_ahbau_dtm_processing.png" width="1200"/>
 
 # Height Normalization of Point Cloud
 
@@ -247,9 +251,9 @@ hist(filter_ground(las_tile_ahbau_csf_sor_norm)$Z,
 plot(las_tile_ahbau_csf_sor_norm, bg = "white")
 ```
 
-<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_norm.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_norm.png" width="1200"/>
 
-<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_norm_histogram.png" width="350" height="191"/>
+![](13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_norm_histogram.png)
 
 # Area-Based Canopy Height Model
 
