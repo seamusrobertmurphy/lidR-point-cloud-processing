@@ -75,7 +75,7 @@ plot(las_ctg_ahbau)
 #las_check(las_ctg_ahbau)
 ```
 
-![](13_lidR_PointCloud_Processing_files/markdown_pngs/tas_ctg_check.png)To avoid edge artifacts, buffering was left at 10m and the '-drop_class 19' filter was applied. See LAS point classifications noting overlapping flags [here](https://desktop.arcgis.com/en/arcmap/latest/manage-data/las-dataset/lidar-point-classification.htm#ESRI_SECTION1_FDEB62EB5C2B463F86507C3EE0A7F441).  
+![](13_lidR_PointCloud_Processing_files/markdown_pngs/tas_ctg_check.png)To avoid edge artifacts, buffering was left at 10m and the '-drop_class 19' filter was applied. See LAS point classifications noting overlapping flags [here](https://desktop.arcgis.com/en/arcmap/latest/manage-data/las-dataset/lidar-point-classification.htm#ESRI_SECTION1_FDEB62EB5C2B463F86507C3EE0A7F441).
 
 ```{r, eval=FALSE}
 las_ctg_ahbau_indexed = readALSLAScatalog("./Data/Ahbau/Las_v12_ASPRS/")
@@ -160,7 +160,7 @@ plot(las_tile_ahbau_pmf, color = "Classification", bg = "white")
 
 # Classification and Removal of Noise
 
-Classification of photon noise was applied using the 'sor' Statistical Outlier Removal' algorithm. This was fitted with default neighbourhood sample and multiplier of k=10 and m=3. Four possible methods for noise screening were found: 1) classifcation with internal algorithms and filtering with 'filter_poi' function and 'LASNOISE' string, 2) or filtering using the LAS classification codes with 'opt_filter' tool and '-drop class 19' string, 3) screening by threshold such as 'Z \> 40 & Z \< 0', 4) or screening by 95th percentiles. Seems a signficant topic in forestry so leave this to your better judgement. The first approach seemed slower in the long run due to loss spatial indexing after assigning new catalog object to operate the filter_poi function, as seen below.
+Classification of photon noise was applied using the 'sor' Statistical Outlier Removal' algorithm. This was fitted with default neighbourhood sample and multiplier of k=10 and m=3. Four possible methods for noise screening were found: 1) classification with internal algorithms and filtering with 'filter_poi' function and 'LASNOISE' string, 2) or filtering using the LAS classification codes with 'opt_filter' tool and '-drop class 19' string, 3) screening by threshold such as 'Z \> 40 & Z \< 0', 4) or screening by 95th percentiles. Seems a significant topic in forestry so leave this to your better judgement. The first approach seemed slower in the long run due to loss spatial indexing after assigning new catalog object to operate the filter_poi function, as seen below.
 
 ```{r, eval=FALSE}
 opt_output_files(las_ctg_ahbau_csf) = paste0(tempdir(), "./Data/las_ctg_ahbau_csf_so")
@@ -173,7 +173,7 @@ index(las_ctg_ahbau_csf) = "quadtree"
 
 las_ctg_ahbau_csf_so = classify_noise(las_ctg_ahbau_csf, sor(k=10, m=3))
 opt_output_files(las_ctg_ahbau_csf_so) = paste0(tempdir(), "./Data/las_ctg_ahbau_csf_sor")
-las_ctg_ahbau_csf_sor = filter_poi(las_ctg_ahbau_indexed, Classification != LASNOISE)
+las_ctg_ahbau_csf_sor = filter_poi(las_ctg_ahbau_csf_so, Classification != LASNOISE)
 
 las_tile_ahbau_csf_so = classify_noise(las_tile_ahbau_csf, sor(k=10, m=3))
 las_tile_ahbau_pmf_so = classify_noise(las_tile_ahbau_pmf, sor(k=10, m=3))
