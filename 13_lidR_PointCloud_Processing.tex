@@ -1,0 +1,524 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Script Review: `14\_lidR-Processing\_to\_Git'},
+  pdfauthor={SRM-LQ},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Script Review: `14\_lidR-Processing\_to\_Git'}
+\author{SRM-LQ}
+\date{04/02/2022}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{5}
+\tableofcontents
+}
+\hypertarget{action}{%
+\subsection*{Action}\label{action}}
+\addcontentsline{toc}{subsection}{Action}
+
+This following indcludes R Markdown documentation of the LiDAR
+processing steps taken to derive landscape metrics and raster covariates
+from a continuous point cloud using the lidR package. This report and
+literate programming, along with its virtual environment were are stored
+in the github repository here:
+\href{https://github.com/seamusrobertmurphy/13_lidR_PointCloud_Processing.git}{13\_lidR\_PointCloud\_Processing}.
+
+\hypertarget{import-lidar}{%
+\section{Import LiDAR}\label{import-lidar}}
+
+LiDAR downloads for the Ahbau region were imported as zip files and
+unpacked from their top-directory and subdirectory folders using the
+unzip function. I could not find any published R packages that deal with
+.7z archive files. Instead custom-written function was adopted from the
+RAMP project. This was done with the following code chunk:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{zip\_file\_ahbau }\OtherTok{=}\NormalTok{ (}\StringTok{"./14\_LiDR{-}Processing\_GitRepo/Data/Ahbau.zip"}\NormalTok{)}
+\NormalTok{zip\_dir\_ahbau\_top }\OtherTok{=}\NormalTok{ (}\StringTok{"./14\_LiDR{-}Processing\_GitRepo/Data/"}\NormalTok{)}
+\FunctionTok{unzip}\NormalTok{(zip\_file\_ahbau, }
+      \AttributeTok{exdir =}\NormalTok{ zip\_dir\_ahbau\_top, }
+      \AttributeTok{overwrite =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{zip\_dir\_ahbau\_sub }\OtherTok{=}\NormalTok{ (}\StringTok{"./14\_LiDR{-}Processing\_GitRepo/Data/Ahbau/Las\_v12\_ASPRS"}\NormalTok{)}
+\NormalTok{zip\_file\_ahbau\_sub }\OtherTok{=} \FunctionTok{list.files}\NormalTok{(}
+\NormalTok{  zip\_dir\_ahbau\_sub,}
+  \AttributeTok{full.names =}\NormalTok{ T,}
+  \AttributeTok{recursive =}\NormalTok{ F,}
+  \AttributeTok{pattern =} \StringTok{\textquotesingle{}.7z$\textquotesingle{}}\NormalTok{)}
+\NormalTok{ Write RAMP }\ControlFlowTok{function}\NormalTok{ and extract}
+\NormalTok{un7zip }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(archive, where) \{}
+\NormalTok{  archive }\OtherTok{\textless{}{-}} \FunctionTok{normalizePath}\NormalTok{(archive)}
+\NormalTok{  current\_path }\OtherTok{\textless{}{-}} \FunctionTok{setwd}\NormalTok{(where)}
+  \FunctionTok{system}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"7zr x"}\NormalTok{, archive, }\AttributeTok{sep =} \StringTok{" "}\NormalTok{))}
+  \FunctionTok{setwd}\NormalTok{(current\_path) \}}
+\FunctionTok{un7zip}\NormalTok{(zip\_file\_ahbau\_sub, zip\_dir\_ahbau\_top)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{read-validate-and-assemble-lidar-collection}{%
+\section{Read, Validate, and Assemble LiDAR
+Collection}\label{read-validate-and-assemble-lidar-collection}}
+
+LiDAR data for the Ahbau region included 311 tiles. Tiles were
+assembled, imported and processed as a LAS collection object using the
+\emph{LAScatalog} Engine. Initial validation of catalog tiling reported
+overlapping areas. As per PI recommendations, retiling and rebuffering
+was implemented to remove potential duplicates with new chunk sizing ok
+1km each, \emph{readALSLAScatalog} function, which allowed settings for
+chunk processing, spatial indexing, buffering and duplicate cleaning.
+Parameters were calibrated to conduct retiling and remove duplicates
+generated by tiles This was confirmed in validation reports below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{las\_ctg\_ahbau }\OtherTok{=} \FunctionTok{readALSLAScatalog}\NormalTok{(}\StringTok{"./Data/Ahbau/Las\_v12\_ASPRS/"}\NormalTok{, }\AttributeTok{select =} \StringTok{"xyzcr"}\NormalTok{,)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   |                                                                              |===================================================                   |  72%  |                                                                              |===================================================                   |  73%  |                                                                              |====================================================                  |  74%  |                                                                              |====================================================                  |  75%  |                                                                              |=====================================================                 |  75%  |                                                                              |=====================================================                 |  76%  |                                                                              |======================================================                |  77%  |                                                                              |======================================================                |  78%  |                                                                              |=======================================================               |  78%  |                                                                              |=======================================================               |  79%  |                                                                              |========================================================              |  80%  |                                                                              |=========================================================             |  81%  |                                                                              |=========================================================             |  82%  |                                                                              |==========================================================            |  82%  |                                                                              |==========================================================            |  83%  |                                                                              |===========================================================           |  84%  |                                                                              |===========================================================           |  85%  |                                                                              |============================================================          |  85%  |                                                                              |============================================================          |  86%  |                                                                              |=============================================================         |  87%  |                                                                              |=============================================================         |  88%  |                                                                              |==============================================================        |  88%  |                                                                              |==============================================================        |  89%  |                                                                              |===============================================================       |  90%  |                                                                              |================================================================      |  91%  |                                                                              |================================================================      |  92%  |                                                                              |=================================================================     |  92%  |                                                                              |=================================================================     |  93%  |                                                                              |==================================================================    |  94%  |                                                                              |==================================================================    |  95%  |                                                                              |===================================================================   |  95%  |                                                                              |===================================================================   |  96%  |                                                                              |====================================================================  |  97%  |                                                                              |====================================================================  |  98%  |                                                                              |===================================================================== |  98%  |                                                                              |===================================================================== |  99%
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{las\_check}\NormalTok{(las\_ctg\_ahbau)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Checking headers consistency
+##   - Checking file version consistency...[0;32m ✓[0m
+##   - Checking scale consistency...[0;32m ✓[0m
+##   - Checking offset consistency...[0;32m ✓[0m
+##   - Checking point type consistency...[0;32m ✓[0m
+##   - Checking VLR consistency...[0;32m ✓[0m
+##   - Checking CRS consistency...[0;32m ✓[0m
+##  Checking the headers
+##   - Checking scale factor validity...[0;32m ✓[0m
+##   - Checking Point Data Format ID validity...[0;32m ✓[0m
+##  Checking preprocessing already done 
+##   - Checking negative outliers...[0;32m ✓[0m
+##   - Checking normalization...[0;31m no[0m
+##  Checking the geometry
+##   - Checking overlapping tiles...
+##  [1;33m   ⚠ Some tiles seem to overlap each other[0m
+##   - Checking point indexation...[0;32m yes[0m
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(las\_ctg\_ahbau)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{13_lidR_PointCloud_Processing_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+Catalog indexing and chunk processing was attempted first time around
+using the \emph{catalog\_laxindex} and the \emph{catalog\_retile}
+operations. This was a little more sluggish and buggy, and only relies
+on the internal lidR tools of \emph{readALSLAScatalog} that was faster.
+The \emph{readALSLAScatalog} function allows calibrating chunk
+processing, rebuffering, indexing, and filtering while reading in.
+According to lidR manual, `catalogs with files that overlap are not
+natively supported\ldots{} the user should filter any overlaps' (cite:
+pg \#no.). To avoid edge artifacts, reccommended buffering was left at
+10m and the `-drop\_class 19' filter was applied. For LAS point
+classifications, see ESRI resource
+\href{https://desktop.arcgis.com/en/arcmap/latest/manage-data/las-dataset/lidar-point-classification.htm\#ESRI_SECTION1_FDEB62EB5C2B463F86507C3EE0A7F441}{here}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{las\_ctg\_ahbau\_indexed }\OtherTok{=} \FunctionTok{readALSLAScatalog}\NormalTok{(}\StringTok{"./Data/Ahbau/Las\_v12\_ASPRS/"}\NormalTok{)}
+\FunctionTok{opt\_output\_files}\NormalTok{(las\_ctg\_ahbau\_indexed) }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{tempdir}\NormalTok{(), }\StringTok{"./Data/las\_ctg\_ahbau\_indexed"}\NormalTok{)}
+\FunctionTok{opt\_select}\NormalTok{(las\_ctg\_ahbau\_indexed) }\OtherTok{=} \StringTok{"xyzcr"}
+\FunctionTok{opt\_filter}\NormalTok{(las\_ctg\_ahbau\_indexed) }\OtherTok{=} \StringTok{\textquotesingle{}{-}drop\_class 19\textquotesingle{}} 
+\FunctionTok{opt\_chunk\_size}\NormalTok{(las\_ctg\_ahbau\_indexed) }\OtherTok{=} \DecValTok{1000} 
+\FunctionTok{opt\_chunk\_buffer}\NormalTok{(las\_ctg\_ahbau\_indexed) }\OtherTok{=} \DecValTok{10}
+\FunctionTok{filter\_duplicates}\NormalTok{(las\_ctg\_ahbau\_indexed)}
+\FunctionTok{is.indexed}\NormalTok{(las\_ctg\_ahbau\_indexed)}
+\FunctionTok{las\_check}\NormalTok{(las\_ctg\_ahbau\_indexed)}
+\FunctionTok{plot}\NormalTok{(las\_ctg\_ahbau\_indexed, }\AttributeTok{chunk =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  Checking headers consistency
+##   - Checking file version consistency...[0;32m ✓[0m
+##   - Checking scale consistency...[0;32m ✓[0m
+##   - Checking offset consistency...[0;32m ✓[0m
+##   - Checking point type consistency...[0;32m ✓[0m
+##   - Checking VLR consistency...[0;32m ✓[0m
+##   - Checking CRS consistency...[0;32m ✓[0m
+##  Checking the headers
+##   - Checking scale factor validity...[0;32m ✓[0m
+##   - Checking Point Data Format ID validity...[0;32m ✓[0m
+##  Checking preprocessing already done 
+##   - Checking negative outliers...[0;32m ✓[0m
+##   - Checking normalization...[0;31m no[0m
+##  Checking the geometry
+##   - Checking overlapping tiles...
+##  [1;33m   ⚠ Some tiles seem to overlap each other[0m
+##   - Checking point indexation...[0;32m yes[0m
+\end{verbatim}
+
+\includegraphics{13_lidR_PointCloud_Processing_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+For visualization purposes, a single las tile '093g030122ne'' was
+loaded, processed and plotted. All subsequent illustrations of
+processing operations were rendered using this tile chunk.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{las\_tile\_ahbau }\OtherTok{=} \FunctionTok{readLAS}\NormalTok{(}\StringTok{"./Data/Ahbau/Las\_v12\_ASPRS/093g030122ne.las"}\NormalTok{, }\AttributeTok{select =} \StringTok{\textquotesingle{}xyzcr\textquotesingle{}}\NormalTok{, }\AttributeTok{filter =} \StringTok{\textquotesingle{}{-}drop\_class 19\textquotesingle{}}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(las\_tile\_ahbau, }\AttributeTok{bg =} \StringTok{"white"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data/markdown_pngs/las_tile_ahbau.png}
+
+\hypertarget{classification-of-ground-points}{%
+\section{Classification of Ground
+Points}\label{classification-of-ground-points}}
+
+Classification of ground points was implemented twice comparing system
+running time and data voids between the `csf()' Cloth Simulation Filter
+algorithm {[}@zhang2016{]} and the `pmf()' Progressive Morphological
+Filter algorithm {[}@zhang2003{]}. To cover all potnetial eventualities,
+the RCSF packaged was installed from CRAN source file and loaded into
+the github repository ready for virtual environment cloning (see link in
+Action section). Though this package is not a package dependent, just
+seems to facilitate better with fewer bugs popping up.
+
+The Cloth Simulation Filter algorithm was fitted with three parameters
+in order to account for variable topography across the study site and to
+reduce errors during any potential post-processing. This included the
+sloop\_smooth that was applied over a cloth resolution of 10cm at a
+rigidness factor of 1.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(RCSF)}
+\FunctionTok{opt\_output\_files}\NormalTok{(las\_ctg\_ahbau\_indexed) }\OtherTok{=}  \FunctionTok{paste0}\NormalTok{(}\FunctionTok{tempdir}\NormalTok{(), }\StringTok{"./Data/las\_ctg\_ahbau\_csf"}\NormalTok{)}
+\NormalTok{las\_ctg\_ahbau\_csf }\OtherTok{=} \FunctionTok{classify\_ground}\NormalTok{(las\_ctg\_ahbau\_indexed, }\FunctionTok{csf}\NormalTok{(}\AttributeTok{sloop\_smooth=}\ConstantTok{TRUE}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{las\_tile\_ahbau\_csf }\OtherTok{=} \FunctionTok{classify\_ground}\NormalTok{(las\_tile\_ahbau, }\FunctionTok{csf}\NormalTok{(}\AttributeTok{sloop\_smooth=}\ConstantTok{TRUE}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(las\_tile\_ahbau\_csf, }\AttributeTok{color =} \StringTok{"Classification"}\NormalTok{, }\AttributeTok{bg =} \StringTok{"white"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data/markdown_pngs/las_tile_ahbau_csf.png}
+
+\hypertarget{progressive-morphological-filter}{%
+\subsection{Progressive Morphological
+Filter}\label{progressive-morphological-filter}}
+
+The Progressive Morphological Filter algorithm was tuned using the
+`util\_makeZhangParam()' method, which generated a list of candidate
+parameters for testing window size and threshold. This internal function
+simply provides a sequence of parameters that match those in the
+original paper {[}@zhang2003{]}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{opt\_output\_files}\NormalTok{(las\_ctg\_ahbau\_indexed) }\OtherTok{=}  \FunctionTok{paste0}\NormalTok{(}\FunctionTok{tempdir}\NormalTok{(), }\StringTok{"./Data/las\_ctg\_ahbau\_pmf"}\NormalTok{)}
+\FunctionTok{util\_makeZhangParam}\NormalTok{()}
+\NormalTok{las\_ctg\_ahbau\_pmf }\OtherTok{=} \FunctionTok{classify\_ground}\NormalTok{(las\_ctg\_ahbau\_indexed, }\FunctionTok{pmf}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{13}\NormalTok{), }\FunctionTok{seq}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)))}
+\NormalTok{las\_tile\_ahbau\_pmf }\OtherTok{=} \FunctionTok{classify\_ground}\NormalTok{(las\_tile\_ahbau, }\FunctionTok{pmf}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{13}\NormalTok{), }\FunctionTok{seq}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)))}
+\FunctionTok{plot}\NormalTok{(las\_tile\_ahbau\_pmf, }\AttributeTok{color =} \StringTok{"Classification"}\NormalTok{, }\AttributeTok{bg =} \StringTok{"white"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data/markdown_pngs/las_tile_ahbau_pmf.png}
+
+\hypertarget{classification-and-removal-of-noise}{%
+\section{Classification and Removal of
+Noise}\label{classification-and-removal-of-noise}}
+
+Classification of photon noise was applied using the `sor' Statistical
+Outlier Removal' algorithm. This was fitted with default neighbourhood
+sample and multiplier of k=10 and m=3. Four possible methods for noise
+screening were found: 1) classifcation with internal algorithms and
+filtering with `filter\_poi' function and `LASNOISE' string, 2) or
+filtering using the LAS classification codes with `opt\_filter' tool and
+`-drop class 19' string, 3) screening by threshold such as `Z
+\textgreater{} 40 \& Z \textless{} 0', 4) or screening by 95th
+percentiles. Seems a signficant topic in forestry so leave this to your
+better judgement. The first approach seemed slower in the long run due
+to loss spatial indexing after assigning new catalog object to operate
+the filter\_poi function, as seen below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{opt\_output\_files}\NormalTok{(las\_ctg\_ahbau\_csf) }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{tempdir}\NormalTok{(), }\StringTok{"./Data/las\_ctg\_ahbau\_csf\_so"}\NormalTok{)}
+\FunctionTok{opt\_select}\NormalTok{(las\_ctg\_ahbau\_csf) }\OtherTok{=} \StringTok{"xyzcr"}
+\FunctionTok{opt\_filter}\NormalTok{(las\_ctg\_ahbau\_csf) }\OtherTok{=} \StringTok{"{-}drop\_class 19"}
+\FunctionTok{opt\_chunk\_size}\NormalTok{(las\_ctg\_ahbau\_csf) }\OtherTok{=} \DecValTok{1000}
+\FunctionTok{opt\_chunk\_buffer}\NormalTok{(las\_ctg\_ahbau\_csf) }\OtherTok{=} \DecValTok{10}
+\FunctionTok{sensor}\NormalTok{(las\_ctg\_ahbau\_csf) }\OtherTok{=} \StringTok{"als"}
+\FunctionTok{index}\NormalTok{(las\_ctg\_ahbau\_csf) }\OtherTok{=} \StringTok{"quadtree"}
+
+\NormalTok{las\_ctg\_ahbau\_csf\_so }\OtherTok{=} \FunctionTok{classify\_noise}\NormalTok{(las\_ctg\_ahbau\_csf, }\FunctionTok{sor}\NormalTok{(}\AttributeTok{k=}\DecValTok{10}\NormalTok{, }\AttributeTok{m=}\DecValTok{3}\NormalTok{))}
+\FunctionTok{opt\_output\_files}\NormalTok{(las\_ctg\_ahbau\_csf\_so) }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{tempdir}\NormalTok{(), }\StringTok{"./Data/las\_ctg\_ahbau\_csf\_sor"}\NormalTok{)}
+\NormalTok{las\_ctg\_ahbau\_csf\_sor }\OtherTok{=} \FunctionTok{filter\_poi}\NormalTok{(las\_ctg\_ahbau\_indexed, Classification }\SpecialCharTok{!=}\NormalTok{ LASNOISE)}
+
+\NormalTok{las\_tile\_ahbau\_csf\_so }\OtherTok{=} \FunctionTok{classify\_noise}\NormalTok{(las\_tile\_ahbau\_csf, }\FunctionTok{sor}\NormalTok{(}\AttributeTok{k=}\DecValTok{10}\NormalTok{, }\AttributeTok{m=}\DecValTok{3}\NormalTok{))}
+\NormalTok{las\_tile\_ahbau\_pmf\_so }\OtherTok{=} \FunctionTok{classify\_noise}\NormalTok{(las\_tile\_ahbau\_pmf, }\FunctionTok{sor}\NormalTok{(}\AttributeTok{k=}\DecValTok{10}\NormalTok{, }\AttributeTok{m=}\DecValTok{3}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(las\_tile\_ahbau\_csf\_so, }\AttributeTok{color =} \StringTok{"Classification"}\NormalTok{, }\AttributeTok{bg =} \StringTok{"white"}\NormalTok{) }
+\FunctionTok{plot}\NormalTok{(las\_tile\_ahbau\_pmf\_so, }\AttributeTok{color =} \StringTok{"Classification"}\NormalTok{, }\AttributeTok{bg =} \StringTok{"white"}\NormalTok{) }
+\NormalTok{las\_tile\_ahbau\_csf\_sor }\OtherTok{=} \FunctionTok{filter\_poi}\NormalTok{(las\_tile\_ahbau\_csf\_so, Classification }\SpecialCharTok{!=}\NormalTok{ LASNOISE)}
+\NormalTok{las\_tile\_ahbau\_pmf\_sor }\OtherTok{=} \FunctionTok{filter\_poi}\NormalTok{(las\_tile\_ahbau\_pmf\_so, Classification }\SpecialCharTok{!=}\NormalTok{ LASNOISE)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{digital-terrain-model}{%
+\section{Digital Terrain Model}\label{digital-terrain-model}}
+
+A digital terrain model was derived from a continuous, cleaned point
+cloud by applying the `Inverse Distance Weighting' algorithm
+{[}@tu2020{]}. The LAScataolog was read in again for faster processing
+by selectingfilter as is common practic in forestry analysis. As per
+PI's guidance, the Inverse Distance Weighting algorithm was chosen for
+its improved running time and its sensitivity to lake anomalies. This
+was implemented twice using the sample tile to compare visually between
+those derived from `CSF' and `PMF' processing. Parameters were set to
+default maximum radius of 50m, neighbourhood of 10 and inverse distance
+weighting power of 2, with a resolution of 1m.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{las\_tile\_ahbau\_csf\_sor\_dtm }\OtherTok{=} \FunctionTok{grid\_terrain}\NormalTok{(las\_tile\_ahbau\_csf\_sor, }\DecValTok{1}\NormalTok{, }\FunctionTok{knnidw}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{50}\NormalTok{))}
+\NormalTok{las\_tile\_ahbau\_pmf\_sor\_dtm }\OtherTok{=} \FunctionTok{grid\_terrain}\NormalTok{(las\_tile\_ahbau\_pmf\_sor, }\DecValTok{1}\NormalTok{, }\FunctionTok{knnidw}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{50}\NormalTok{))}
+\NormalTok{las\_tile\_ahbau\_csf\_sor\_dtm\_plot }\OtherTok{=} \FunctionTok{plot\_dtm3d}\NormalTok{(las\_tile\_ahbau\_csf\_sor\_dtm, }\AttributeTok{bg =} \StringTok{"white"}\NormalTok{) }
+\NormalTok{las\_tile\_ahbau\_pmf\_sor\_dtm\_plot }\OtherTok{=} \FunctionTok{plot\_dtm3d}\NormalTok{(las\_tile\_ahbau\_pmf\_sor\_dtm, }\AttributeTok{bg =} \StringTok{"white"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+Visually, the cloth simulation filter produced better DEM result than
+the pmf that appears grainy. Rousseau (2021: 3.2) mentioned that the
+progressive morphological filter is an originally raster-based
+algorithm, while `csf' may perform better with lidR operations that are
+point-orientated. The former was chosen to derive below a DEM raster for
+the Ahbau catalog. TODO: run individual las\_check on two chunks showing
+warnings in processing image report of `grid\_terrain\ldots knnidw()'
+operation below right:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{opt\_output\_files}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{tempdir}\NormalTok{(), }\StringTok{"./Data/las\_ctg\_ahbau\_dtm"}\NormalTok{)}
+\FunctionTok{opt\_select}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \StringTok{"xyzcr"}
+\FunctionTok{opt\_filter}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \StringTok{\textquotesingle{}{-}drop\_class 19\textquotesingle{}} 
+\FunctionTok{opt\_chunk\_size}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \DecValTok{1000} 
+\FunctionTok{opt\_chunk\_buffer}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \DecValTok{10}
+\FunctionTok{sensor}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \StringTok{\textquotesingle{}als\textquotesingle{}}
+\FunctionTok{index}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \StringTok{"quadtree"}
+\NormalTok{las\_ctg\_ahbau\_csf\_dtm }\OtherTok{=} \FunctionTok{grid\_terrain}\NormalTok{(las\_ctg\_ahbau, }\DecValTok{1}\NormalTok{, }\FunctionTok{knnidw}\NormalTok{())}
+\CommentTok{\#opt\_stop\_early(las\_ctg\_ahbau\_csf) \textless{}{-} FALSE \#to skip voids}
+\CommentTok{\#las\_ctg\_ahbau\_csf\_dtm = grid\_terrain(las\_ctg\_ahbau, 1, tin())}
+\NormalTok{las\_ctg\_ahbau\_csf\_sor\_dtm\_crop }\OtherTok{=} \FunctionTok{crop}\NormalTok{(}
+\NormalTok{  las\_ctg\_ahbau\_csf\_dtm, }\FunctionTok{extent}\NormalTok{(las\_ctg\_ahbau\_csf\_dtm) }\SpecialCharTok{{-}} \DecValTok{10}\NormalTok{)}
+\FunctionTok{crs}\NormalTok{(las\_ctg\_ahbau\_csf\_sor\_dtm\_crop) }\OtherTok{=} \DecValTok{3005}
+\NormalTok{las\_ctg\_ahbau\_csf\_sor\_dtm\_slope }\OtherTok{=}\NormalTok{ terra}\SpecialCharTok{::}\FunctionTok{terrain}\NormalTok{(}
+\NormalTok{  las\_ctg\_ahbau\_csf\_sor\_dtm\_crop, }\StringTok{"slope"}\NormalTok{, }\AttributeTok{unit =} \StringTok{"radians"}\NormalTok{)}
+\NormalTok{las\_ctg\_ahbau\_csf\_sor\_dtm\_aspect }\OtherTok{=}\NormalTok{ terra}\SpecialCharTok{::}\FunctionTok{terrain}\NormalTok{(}
+\NormalTok{  las\_ctg\_ahbau\_csf\_sor\_dtm\_crop, }\StringTok{"aspect"}\NormalTok{, }\AttributeTok{unit =} \StringTok{"radians"}\NormalTok{)}
+\NormalTok{las\_ctg\_ahbau\_csf\_sor\_dtm\_shade }\OtherTok{=} \FunctionTok{hillShade}\NormalTok{(}
+\NormalTok{  las\_ctg\_ahbau\_csf\_sor\_dtm\_slope, las\_ctg\_ahbau\_csf\_sor\_dtm\_aspect, }\DecValTok{40}\NormalTok{, }\DecValTok{270}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(las\_ctg\_ahbau\_csf\_sor\_dtm\_shade, }\AttributeTok{col=}\FunctionTok{grey}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{100}\SpecialCharTok{/}\DecValTok{100}\NormalTok{), }\AttributeTok{legend=}\ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{height-normalization-of-point-cloud}{%
+\section{Height Normalization of Point
+Cloud}\label{height-normalization-of-point-cloud}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{opt\_output\_files}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=}  \FunctionTok{paste0}\NormalTok{(}\FunctionTok{tempdir}\NormalTok{(), }\StringTok{"./Data/las\_ctg\_ahbau\_norm"}\NormalTok{)}
+\FunctionTok{opt\_select}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \StringTok{"xyzr"}
+\FunctionTok{opt\_filter}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \StringTok{\textquotesingle{}{-}keep\_first\textquotesingle{}} 
+\FunctionTok{opt\_chunk\_size}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \DecValTok{1000} 
+\FunctionTok{opt\_chunk\_buffer}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \DecValTok{10}
+\FunctionTok{sensor}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \StringTok{\textquotesingle{}als\textquotesingle{}}
+\FunctionTok{index}\NormalTok{(las\_ctg\_ahbau\_csf\_sor) }\OtherTok{=} \StringTok{"quadtree"}
+
+\NormalTok{las\_ctg\_ahbau\_csf\_sor\_norm }\OtherTok{=} \FunctionTok{normalize\_height}\NormalTok{(las\_ctg\_ahbau\_csf\_sor, }\FunctionTok{knnidw}\NormalTok{())}
+\NormalTok{las\_tile\_ahbau\_csf\_sor\_norm }\OtherTok{=} \FunctionTok{normalize\_height}\NormalTok{(las\_tile\_ahbau\_csf\_sor, }\FunctionTok{knnidw}\NormalTok{())}
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{filter\_ground}\NormalTok{(las\_tile\_ahbau\_csf\_sor\_norm)}\SpecialCharTok{$}\NormalTok{Z, }
+     \AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.6}\NormalTok{, }\FloatTok{0.6}\NormalTok{, }\FloatTok{0.01}\NormalTok{), }\AttributeTok{main =} \StringTok{""}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Elevation"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(las\_tile\_ahbau\_csf\_sor\_norm, }\AttributeTok{bg =} \StringTok{"white"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{area-based-canopy-height-model}{%
+\section{Area-Based Canopy Height
+Model}\label{area-based-canopy-height-model}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{opt\_selopt\_output\_files}\NormalTok{(las\_ctg\_ahbau\_csf\_sor\_norm) }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{tempdir}\NormalTok{(), }\StringTok{"./Data/las\_ctg\_ahbau\_dtm"}\NormalTok{)}
+\FunctionTok{opt\_select}\NormalTok{(las\_ctg\_ahbau\_csf\_sor\_norm) }\OtherTok{=} \StringTok{"xyzr"}
+\FunctionTok{opt\_filter}\NormalTok{(las\_ctg\_ahbau\_csf\_sor\_norm) }\OtherTok{=} \StringTok{\textquotesingle{}{-}keep\_first\textquotesingle{}} 
+\FunctionTok{opt\_chunk\_size}\NormalTok{(las\_ctg\_ahbau\_csf\_sor\_norm) }\OtherTok{=} \DecValTok{1000} 
+\FunctionTok{opt\_chunk\_buffer}\NormalTok{(las\_ctg\_ahbau\_csf\_sor\_norm) }\OtherTok{=} \DecValTok{10}
+\FunctionTok{sensor}\NormalTok{(las\_ctg\_ahbau\_csf\_sor\_norm) }\OtherTok{=} \StringTok{\textquotesingle{}als\textquotesingle{}}
+\FunctionTok{index}\NormalTok{(las\_ctg\_ahbau\_csf\_sor\_norm) }\OtherTok{=} \StringTok{"auto"}
+
+\NormalTok{las\_ctg\_ahbau\_chm }\OtherTok{=} \FunctionTok{grid\_canopy}\NormalTok{(las\_ctg\_ahbau\_csf\_sor\_norm, }\DecValTok{1}\NormalTok{, }\FunctionTok{dsmtin}\NormalTok{(}\DecValTok{8}\NormalTok{))}
+\NormalTok{las\_tile\_ahbau\_chm }\OtherTok{=} \FunctionTok{grid\_canopy}\NormalTok{(las\_tile\_ahbau\_csf\_sor\_norm, }\DecValTok{1}\NormalTok{, }\FunctionTok{dsmtin}\NormalTok{(}\DecValTok{8}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(las\_tile\_ahbau\_chm, }\AttributeTok{col =} \FunctionTok{height.colors}\NormalTok{(}\DecValTok{50}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data/markdown_pngs/las_tile_ahbau_chm}
+
+\hypertarget{individual-tree-metrics-canopy-height-model}{%
+\section{Individual Tree Metrics \& Canopy Height
+Model}\label{individual-tree-metrics-canopy-height-model}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{las\_tile\_ahbau\_csf\_sor\_norm\_ttops }\OtherTok{=} \FunctionTok{find\_trees}\NormalTok{(las\_tile\_ahbau\_csf\_sor\_norm, }\FunctionTok{lmf}\NormalTok{(}\DecValTok{4}\NormalTok{), }\AttributeTok{uniqueness =} \StringTok{"bitmerge"}\NormalTok{)}
+\NormalTok{algo }\OtherTok{=} \FunctionTok{dalponte2016}\NormalTok{(las\_tile\_ahbau\_chm, las\_tile\_ahbau\_csf\_sor\_norm\_ttops)}
+\NormalTok{las\_tile\_ahbau\_csf\_sor\_norm\_ttops\_segmented }\OtherTok{=} \FunctionTok{segment\_trees}\NormalTok{(las\_tile\_ahbau\_csf\_sor\_norm, algo)}
+
+
+\CommentTok{\#filter\_poi(las\_tile\_ahbau\_csf\_sor\_norm, Z \textless{} 0 \& Z \textgreater{}= 0.15)}
+\NormalTok{myMetrics }\OtherTok{=} \FunctionTok{tree\_metrics}\NormalTok{(las\_tile\_ahbau\_csf\_sor\_norm, }\SpecialCharTok{\textasciitilde{}}\FunctionTok{list}\NormalTok{(}
+    \AttributeTok{zmean   =} \FunctionTok{mean}\NormalTok{(z),}
+    \AttributeTok{zmax    =} \FunctionTok{max}\NormalTok{(z),}
+    \AttributeTok{q01     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.01}\NormalTok{)),     }\CommentTok{\# 1st percentile value for cell}
+    \AttributeTok{q05     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.05}\NormalTok{)),     }\CommentTok{\# 5th percentile value for cell}
+    \AttributeTok{q10     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{)),      }\CommentTok{\# 10th percentile value for cell}
+    \AttributeTok{q20     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.2}\NormalTok{)),      }\CommentTok{\# 20th percentile value for cell}
+    \AttributeTok{q30     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.3}\NormalTok{)),      }\CommentTok{\# 30th percentile value for cell}
+    \AttributeTok{q40     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.4}\NormalTok{)),      }\CommentTok{\# 40th percentile value for cell}
+    \AttributeTok{q50     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.5}\NormalTok{)),      }\CommentTok{\# 50th percentile value for cell}
+    \AttributeTok{q60     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.6}\NormalTok{)),      }\CommentTok{\# 60th percentile value for cell}
+    \AttributeTok{q70     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.7}\NormalTok{)),      }\CommentTok{\# 70th percentile value for cell}
+    \AttributeTok{q75     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.75}\NormalTok{)),     }\CommentTok{\# 75th percentile value for cell}
+    \AttributeTok{q80     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.8}\NormalTok{)),      }\CommentTok{\# 80th percentile value for cell}
+    \AttributeTok{q90     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.9}\NormalTok{)),      }\CommentTok{\# 90th percentile value for cell}
+    \AttributeTok{q95     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.95}\NormalTok{)),     }\CommentTok{\# 95th percentile value for cell}
+    \AttributeTok{q99     =} \FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.99}\NormalTok{)))     }\CommentTok{\# 99th percentile value for cell}
+  
+
+
+\AttributeTok{myMetrics\_htop\_plot =} \FunctionTok{plot}\NormalTok{(myMetrics}\SpecialCharTok{$}\NormalTok{q95)}
+
+\AttributeTok{metrics =} \FunctionTok{tree\_metrics}\NormalTok{(las\_tile\_ahbau\_csf\_sor\_norm\_ttops\_segmented, }\SpecialCharTok{\textasciitilde{}}\FunctionTok{list}\NormalTok{(}\AttributeTok{z\_max =} \FunctionTok{max}\NormalTok{(Z), }\AttributeTok{z\_mean =} \FunctionTok{mean}\NormalTok{(Z)))}
+\AttributeTok{metrics\_htop =} \FunctionTok{filter\_poi}\NormalTok{(las\_tile\_ahbau\_csf\_sor\_norm\_ttops\_segmented, treeID, }\SpecialCharTok{\%in\%}\NormalTok{, metrics}\SpecialCharTok{$}\AttributeTok{z\_mean=}\SpecialCharTok{\textgreater{}}\DecValTok{95}\NormalTok{))}
+\NormalTok{metrics\_htop }\OtherTok{=} \FunctionTok{tree\_metrics}\NormalTok{(las\_tile\_ahbau\_csf\_sor\_norm,}\FunctionTok{quantile}\NormalTok{(z, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.95}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(metrics\_htop)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Data/markdown_pngs/htop}
+
+\end{document}
