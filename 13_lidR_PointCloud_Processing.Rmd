@@ -189,7 +189,7 @@ las_tile_ahbau_pmf_sor = filter_poi(las_tile_ahbau_pmf_so, Classification != LAS
 
 # Digital Terrain Model
 
-A digital terrain model was derived from a continuous, cleaned point cloud by applying the 'Inverse Distance Weighting' algorithm [\@tu2020]. The LAScataolog was read in again for faster processing by selectingfilter as is common practic in forestry analysis. As per PI's guidance, the Inverse Distance Weighting algorithm was chosen for its improved running time and its sensitivity to lake anomalies. This was implemented twice using the sample tile to compare visually between those derived from 'CSF' and 'PMF' processing. Parameters were set to default maximum radius of 50m, neighbourhood of 10 and inverse distance weighting power of 2, with a resolution of 1m.
+A digital terrain model was derived from a continuous, cleaned point cloud by applying the 'Inverse Distance Weighting' algorithm [\@tu2020]. The LAScataolog was read in again for faster processing. The Inverse Distance Weighting algorithm was chosen for its improved running time and its sensitivity to lake anomalies. This was implemented twice using the sample tile to compare visually between those derived from 'CSF' and 'PMF' processing. Parameters were set to default maximum radius of 50m, neighbourhood of 10 and inverse distance weighting power of 2, with a resolution of 1m.
 
 ```{r, eval=FALSE}
 las_tile_ahbau_csf_sor_dtm = grid_terrain(las_tile_ahbau_csf_sor, 1, knnidw(10, 2, 50))
