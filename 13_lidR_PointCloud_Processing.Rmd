@@ -124,7 +124,7 @@ las_tile_ahbau = readLAS("./Data/Ahbau/Las_v12_ASPRS/093g030122ne.las", select =
 plot(las_tile_ahbau, bg = "white")
 ```
 
-![](Data/markdown_pngs/las_tile_ahbau.png)
+![](13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau.png)
 
 # Classification of Ground Points
 
@@ -140,7 +140,7 @@ las_tile_ahbau_csf = classify_ground(las_tile_ahbau, csf(sloop_smooth=TRUE, 0.5,
 plot(las_tile_ahbau_csf, color = "Classification", bg = "white") 
 ```
 
-![](Data/markdown_pngs/las_tile_ahbau_csf.png)
+![](13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_csf.png)
 
 ## Progressive Morphological Filter
 
@@ -154,7 +154,7 @@ las_tile_ahbau_pmf = classify_ground(las_tile_ahbau, pmf(seq(5, 9, 13), seq(3, 3
 plot(las_tile_ahbau_pmf, color = "Classification", bg = "white") 
 ```
 
-![](Data/markdown_pngs/las_tile_ahbau_pmf.png)
+![](13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_pmf.png)
 
 # Classification and Removal of Noise
 
@@ -181,9 +181,9 @@ las_tile_ahbau_csf_sor = filter_poi(las_tile_ahbau_csf_so, Classification != LAS
 las_tile_ahbau_pmf_sor = filter_poi(las_tile_ahbau_pmf_so, Classification != LASNOISE)
 ```
 
-<img src="Data/markdown_pngs/las_tile_ahbau_csf_so.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_csf_so.png" width="350"/>
 
-<img src="Data/markdown_pngs/las_tile_ahbau_pmf_so.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_pmf_so.png" width="350"/>
 
 # Digital Terrain Model
 
@@ -196,9 +196,9 @@ las_tile_ahbau_csf_sor_dtm_plot = plot_dtm3d(las_tile_ahbau_csf_sor_dtm, bg = "w
 las_tile_ahbau_pmf_sor_dtm_plot = plot_dtm3d(las_tile_ahbau_pmf_sor_dtm, bg = "white") 
 ```
 
-<img src="Data/markdown_pngs/las_tile_ahbau_csf_sor_dtm.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_csf_sor_dtm.png" width="350"/>
 
-<img src="Data/markdown_pngs/las_tile_ahbau_pmf_sor_dtm.png" width="345"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_pmf_sor_dtm.png" width="350"/>
 
 Visually, the cloth simulation filter produced better DEM result than the pmf that appears grainy. Rousseau (2021: 3.2) mentioned that the progressive morphological filter is an originally raster-based algorithm, while 'csf' may perform better with lidR operations that are point-orientated. The former was chosen to derive below a DEM raster for the Ahbau catalog. TODO: run individual las_check on two chunks showing warnings in processing image report of 'grid_terrain...knnidw()' operation below right:
 
@@ -225,9 +225,9 @@ las_ctg_ahbau_csf_sor_dtm_shade = hillShade(
 plot(las_ctg_ahbau_csf_sor_dtm_shade, col=grey(0:100/100), legend=FALSE)
 ```
 
-<img src="Data/markdown_pngs/las_ctg_ahbau_hillshade.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_ctg_ahbau_hillshade.png" width="350"/>
 
-<img src="Data/markdown_pngs/las_ctg_ahbau_dtm_processing.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_ctg_ahbau_dtm_processing.png" width="350"/>
 
 # Height Normalization of Point Cloud
 
@@ -247,9 +247,9 @@ hist(filter_ground(las_tile_ahbau_csf_sor_norm)$Z,
 plot(las_tile_ahbau_csf_sor_norm, bg = "white")
 ```
 
-<img src="Data/markdown_pngs/las_tile_ahbau_norm.png" width="350"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_norm.png" width="350"/>
 
-<img src="Data/markdown_pngs/las_tile_ahbau_norm_histogram.png" width="350" height="191.5"/>
+<img src="13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_norm_histogram.png" width="350" height="191"/>
 
 # Area-Based Canopy Height Model
 
@@ -267,7 +267,7 @@ las_tile_ahbau_chm = grid_canopy(las_tile_ahbau_csf_sor_norm, 1, dsmtin(8))
 plot(las_tile_ahbau_chm, col = height.colors(50))
 ```
 
-![](Data/markdown_pngs/las_tile_ahbau_chm)
+![](13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_chm)
 
 # Individual Tree Metrics & Canopy Height Model
 
@@ -307,4 +307,4 @@ metrics_htop = tree_metrics(las_tile_ahbau_csf_sor_norm,quantile(z, probs = c(0.
 plot(metrics_htop)
 ```
 
-![](Data/markdown_pngs/htop)
+![](13_lidR_PointCloud_Processing_files/markdown_pngs/htop)
