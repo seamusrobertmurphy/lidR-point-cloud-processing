@@ -146,8 +146,6 @@ plot(las_tile_ahbau_csf, color = "Classification", bg = "white")
 
 ![](13_lidR_PointCloud_Processing_files/markdown_pngs/las_tile_ahbau_csf.png)
 
-## Progressive Morphological Filter
-
 The Progressive Morphological Filter algorithm was tuned using the 'util_makeZhangParam()' method, which generated a list of candidate parameters for testing window size and threshold. This internal function simply provides a sequence of parameters that match those in the original paper [\@zhang2003].
 
 ```{r, eval=FALSE}
