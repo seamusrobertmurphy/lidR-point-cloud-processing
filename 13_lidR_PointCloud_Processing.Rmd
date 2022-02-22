@@ -10,7 +10,7 @@ output:
     latex_engine: xelatex
   zotero: TRUE
   
-  bibliography: references.bib   
+bibliography: references.bib   
 ---
 
 ```{r setup, echo=FALSE, message=FALSE,warning=FALSE, error=FALSE}
