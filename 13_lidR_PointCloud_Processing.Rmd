@@ -124,7 +124,9 @@ plot(las_ctg_ahbau_indexed, chunk = TRUE)
 For visualization purposes, a single las tile '093g030122ne" was loaded, processed and plotted. All subsequent illustrations of processing operations were rendered using this tile chunk.
 
 ```{r, echo=TRUE, eval=FALSE, cache=TRUE}
-las_tile_ahbau = readLAS("./Data/Ahbau/Las_v12_ASPRS/093g030122ne.las", select = 'xyzcr', filter = '-drop_class 19')
+las_tile_ahbau = readLAS("./Data/Ahbau/Las_v12_ASPRS/093g030122ne.las", select = 'xyzri', filter = '-drop_class 19')
+las_tile_ahbau = filter_duplicates(las_tile_ahbau)
+las_check(las_tile_ahbau)
 plot(las_tile_ahbau, bg = "white")
 ```
 
